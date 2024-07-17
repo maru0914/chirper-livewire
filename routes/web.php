@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+Route::get('chirps', [\App\Http\Controllers\ChirpController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('chirps');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
